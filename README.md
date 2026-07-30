@@ -48,34 +48,76 @@
 ```text
 Java-Advanced-Learning/
 ├── README.md
-├── 01-thread-foundation/
-├── 02-synchronization/
-├── 03-lock-and-aqs/
-├── 04-concurrent-collections/
-├── 05-atomic-and-volatile/
-├── 06-thread-pool/
-├── 07-producer-consumer/
-├── 08-jmm-and-happens-before/
-├── 09-performance-and-debug/
-└── 10-practice-projects/
+├── pom.xml
+├── 进度.md
+├── .gitignore
+├── src/
+│   └── main/
+│       └── java/
+│           ├── chapter01_thread_foundation/
+│           ├── chapter02_synchronization/
+│           ├── chapter03_lock_and_aqs/
+│           ├── chapter04_concurrent_collections/
+│           ├── chapter05_atomic_and_volatile/
+│           ├── chapter06_thread_pool/
+│           ├── chapter07_producer_consumer/
+│           ├── chapter08_jmm_and_happens_before/
+│           ├── chapter09_performance_and_debug/
+│           └── chapter10_practice_projects/
 ```
 
-## 4. 每个模块的标准格式
+说明：
 
-每个模块建议包含以下内容：
+- 根目录只保留项目说明、Maven 配置和学习进度文件。
+- `src/main/java` 下面按章节建代码文件夹，文件夹名同时包含学习顺序和章节名。
+- 章节文件夹同时也是 Java package，所以使用 `chapter01_thread_foundation` 这类合法名字。
+
+源码章节目录：
+
+```text
+线程基础                    -> chapter01_thread_foundation
+同步机制                    -> chapter02_synchronization
+锁与 AQS                    -> chapter03_lock_and_aqs
+并发容器                    -> chapter04_concurrent_collections
+原子类与 volatile           -> chapter05_atomic_and_volatile
+线程池                      -> chapter06_thread_pool
+生产者消费者                -> chapter07_producer_consumer
+JMM 与 happens-before       -> chapter08_jmm_and_happens_before
+性能分析与问题排查          -> chapter09_performance_and_debug
+综合练习                    -> chapter10_practice_projects
+```
+
+## 4. 当前 Demo
+
+### chapter01_thread_foundation
+
+当前已有：
+
+- `ThreadCreationDemo`：演示继承 `Thread` 和实现 `Runnable` 的区别。
+
+运行方式：
+
+```powershell
+mvn compile
+java -cp target/classes chapter01_thread_foundation.ThreadCreationDemo
+```
+
+## 5. 每个章节的标准格式
+
+每个章节建议包含以下内容：
 
 - 原理说明：这个知识点解决了什么问题
 - 最小 Demo：用尽可能简单的代码复现现象
 - 结果分析：为什么会这样
 - 关键总结：这个知识点的本质是什么
 
-## 5. 执行清单（后续按此推进）
+## 6. 执行清单（后续按此推进）
 
 ### Phase 1：项目搭建
 - [x] 创建仓库说明文件
-- [ ] 创建基础目录结构
-- [ ] 初始化 Java 工程结构
-- [ ] 增加 .gitignore
+- [x] 创建基础目录结构
+- [x] 初始化 Java 工程结构
+- [x] 增加 .gitignore
 
 ### Phase 2：基础并发模块
 - [ ] 完成线程基础示例
@@ -97,7 +139,7 @@ Java-Advanced-Learning/
 - [ ] 统一代码命名风格
 - [ ] 完成最终 README 总结
 
-## 6. 学习方法建议
+## 7. 学习方法建议
 
 为了更高效地掌握并发编程，建议每次学习一个点时都回答以下 4 个问题：
 
@@ -106,7 +148,7 @@ Java-Advanced-Learning/
 3. 它可能在哪些情况下出错？
 4. 它和其他方案有什么区别？
 
-## 7. 后续推进原则
+## 8. 后续推进原则
 
 - 代码尽量小，但要能复现现象
 - 不只写“能运行”的代码，更要写“能说明原理”的代码
