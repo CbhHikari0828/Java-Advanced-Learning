@@ -87,20 +87,30 @@ JMM 与 happens-before       -> chapter08_jmm_and_happens_before
 综合练习                    -> chapter10_practice_projects
 ```
 
-## 4. 当前 Demo
+## 4. 当前学习进度
 
 ### chapter01_thread_foundation
 
-当前已有：
+第一轮已完成：
 
-- `ThreadCreationDemo`：演示继承 `Thread` 和实现 `Runnable` 的区别。
+- `ThreadCreationDemo`：演示继承 `Thread`、实现 `Runnable`、`start()` 和 `run()` 的区别。
+- `CallableFutureDemo`：演示 `Callable + FutureTask` 如何获取异步任务返回值。
+- `ThreadStateDemo`：观察 `NEW`、`RUNNABLE`、`TIMED_WAITING`、`TERMINATED`。
+- `学习笔记.md`：记录本章核心理解。
 
-运行方式：
+下一步进入：
 
-```powershell
-mvn compile
-java -cp target/classes chapter01_thread_foundation.ThreadCreationDemo
+```text
+src/main/java/chapter02_synchronization/
 ```
+
+建议先写：
+
+```text
+RaceConditionDemo.java
+```
+
+目标：先观察多个线程同时修改共享变量时，为什么会出现结果不稳定。
 
 ## 5. 每个章节的标准格式
 
@@ -120,7 +130,7 @@ java -cp target/classes chapter01_thread_foundation.ThreadCreationDemo
 - [x] 增加 .gitignore
 
 ### Phase 2：基础并发模块
-- [ ] 完成线程基础示例
+- [x] 完成线程基础示例
 - [ ] 完成 synchronized 与 volatile 示例
 - [ ] 完成线程池示例
 
@@ -135,7 +145,7 @@ java -cp target/classes chapter01_thread_foundation.ThreadCreationDemo
 - [ ] 完成 JFR / jstack 排查示例
 
 ### Phase 5：整理总结
-- [ ] 补充每个模块的学习笔记
+- [ ] 补充每个章节的学习笔记
 - [ ] 统一代码命名风格
 - [ ] 完成最终 README 总结
 

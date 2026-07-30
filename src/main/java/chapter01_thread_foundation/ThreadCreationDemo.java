@@ -1,39 +1,29 @@
 package chapter01_thread_foundation;
 
-public final class ThreadCreationDemo {
-    private ThreadCreationDemo() {
+public class ThreadCreationDemo {
+    public static void main(String[] args) {
+        System.out.println(Thread.currentThread().getName() + " is running");
+        MyThread myThread = new MyThread();
+        myThread.start();
+        MyTask myTask = new MyTask();
+        Thread thread = new Thread(myTask); // Runnable创建的是任务而非线程，线程和任务真正解耦了
+        new Thread(myTask).start();
+        thread.start();
     }
 
-    public static void main(String[] args) throws InterruptedException {
-        Thread threadByInheritance = new GreetingThread("extends Thread");
-
-        Runnable runnableTask = () -> printCurrentThread("implements Runnable");
-        Thread threadByRunnable = new Thread(runnableTask, "runnable-worker");
-
-        threadByInheritance.start();
-        threadByRunnable.start();
-
-        threadByInheritance.join();
-        threadByRunnable.join();
-
-        printCurrentThread("main method");
-    }
-
-    private static final class GreetingThread extends Thread {
-        private final String taskName;
-
-        private GreetingThread(String taskName) {
-            super("thread-subclass-worker");
-            this.taskName = taskName;
-        }
-
+    static class MyThread extends Thread {
         @Override
         public void run() {
-            printCurrentThread(taskName);
+            System.out.println(Thread.currentThread().getName() + " is running");
         }
     }
 
-    private static void printCurrentThread(String taskName) {
-        System.out.printf("%s -> running in %s%n", taskName, Thread.currentThread().getName());
+    static class MyTask implements Runnable {
+        @Override
+        public void run() {
+            System.out.println(Thread.currentThread().getName() + " is running");
+        }
     }
+
+    
 }
