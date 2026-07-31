@@ -98,19 +98,32 @@ JMM 与 happens-before       -> chapter08_jmm_and_happens_before
 - `ThreadStateDemo`：观察 `NEW`、`RUNNABLE`、`TIMED_WAITING`、`TERMINATED`。
 - `学习笔记.md`：记录本章核心理解。
 
+### chapter02_synchronization
+
+第一轮已完成：
+
+- `RaceConditionDemo`：观察 `counter++` 的竞态条件，并用 `synchronized` 修复。
+- `LockObjectDemo`：观察不同锁对象互不阻塞，同一锁对象需要排队。
+- `InstanceLockDemo`：观察实例锁、类锁和不同对象实例之间的区别。
+- `ReentrantSynchronizedDemo`：观察 `synchronized` 的可重入特性。
+- `VolatileVisibilityDemo`：观察 `volatile` 解决可见性问题。
+- `VolatileNotAtomicDemo`：观察 `volatile` 不保证 `counter++` 的原子性。
+- `WaitNotifyDemo`：观察 `wait / notify` 的等待、释放锁、通知和重新竞争锁流程。
+- `学习笔记.md`：记录本章核心理解。
+
 下一步进入：
 
 ```text
-src/main/java/chapter02_synchronization/
+src/main/java/chapter05_atomic_and_volatile/
 ```
 
 建议先写：
 
 ```text
-RaceConditionDemo.java
+AtomicIntegerDemo.java
 ```
 
-目标：先观察多个线程同时修改共享变量时，为什么会出现结果不稳定。
+目标：先用 `AtomicInteger` 修复 `counter++` 的原子性问题，再理解 CAS 的基本思想。
 
 ## 5. 每个章节的标准格式
 
@@ -131,7 +144,7 @@ RaceConditionDemo.java
 
 ### Phase 2：基础并发模块
 - [x] 完成线程基础示例
-- [ ] 完成 synchronized 与 volatile 示例
+- [x] 完成 synchronized 与 volatile 示例
 - [ ] 完成线程池示例
 
 ### Phase 3：核心原理模块
