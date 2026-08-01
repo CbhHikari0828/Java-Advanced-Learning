@@ -111,19 +111,29 @@ JMM 与 happens-before       -> chapter08_jmm_and_happens_before
 - `WaitNotifyDemo`：观察 `wait / notify` 的等待、释放锁、通知和重新竞争锁流程。
 - `学习笔记.md`：记录本章核心理解。
 
+### chapter03_lock_and_aqs
+
+第一轮已完成：
+
+- `ReentrantLockDemo`：观察 `ReentrantLock` 如何保护临界区、为什么 `unlock()` 要放在 `finally` 中，以及可重入锁的基本行为。
+- `TryLockDemo`：观察 `tryLock()` 拿不到锁时不会一直等待，而是立刻返回失败。
+- `TimedTryLockDemo`：观察 `tryLock(timeout)` 可以最多等待一段时间，等不到再放弃。
+- `ConditionDemo`：观察 `Condition.await()`、`signal()` 的等待、唤醒和重新竞争锁流程。
+- `学习笔记.md`：记录 `ReentrantLock`、`tryLock`、`Condition`、公平锁和 AQS 的核心理解。
+
 下一步进入：
 
 ```text
-src/main/java/chapter05_atomic_and_volatile/
+src/main/java/chapter04_concurrent_collections/
 ```
 
 建议先写：
 
 ```text
-AtomicIntegerDemo.java
+ConcurrentHashMapDemo.java
 ```
 
-目标：先用 `AtomicInteger` 修复 `counter++` 的原子性问题，再理解 CAS 的基本思想。
+目标：先理解普通 `HashMap` 在并发修改下为什么不安全，再观察 `ConcurrentHashMap` 如何支持并发读写。
 
 ## 5. 每个章节的标准格式
 
@@ -148,8 +158,8 @@ AtomicIntegerDemo.java
 - [ ] 完成线程池示例
 
 ### Phase 3：核心原理模块
-- [ ] 完成 ReentrantLock 与 Condition 示例
-- [ ] 完成 AQS 原理说明与代码演示
+- [x] 完成 ReentrantLock 与 Condition 示例
+- [x] 完成 AQS 基本思想说明
 - [ ] 完成 ConcurrentHashMap / Atomic 类示例
 
 ### Phase 4：问题排查与实战
