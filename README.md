@@ -121,19 +121,31 @@ JMM 与 happens-before       -> chapter08_jmm_and_happens_before
 - `ConditionDemo`：观察 `Condition.await()`、`signal()` 的等待、唤醒和重新竞争锁流程。
 - `学习笔记.md`：记录 `ReentrantLock`、`tryLock`、`Condition`、公平锁和 AQS 的核心理解。
 
+### chapter04_concurrent_collections
+
+第一轮已完成：
+
+- `ConcurrentHashMapDemo`：观察普通 `HashMap` 并发写入的不稳定结果，以及 `ConcurrentHashMap` 的并发安全写入。
+- `PutIfAbsentDemo`：观察 `putIfAbsent` 如何把“检查是否存在”和“放入值”合成一个原子操作。
+- `ComputeIfAbsentDemo`：观察 `computeIfAbsent` 如何在 key 不存在时才执行计算逻辑，并复用已有结果。
+- `SynchronizedMapDemo`：观察 `Collections.synchronizedMap` 如何保护单次 Map 方法调用。
+- `MapIterationDemo`：观察 `HashMap` 遍历时的 fail-fast，以及 `ConcurrentHashMap` 的弱一致遍历。
+- `CopyOnWriteArrayListDemo`：观察 `CopyOnWriteArrayList` 如何用写时复制保证并发遍历安全。
+- `学习笔记.md`：记录并发容器、原子组合方法、弱一致遍历和写时复制的核心理解。
+
 下一步进入：
 
 ```text
-src/main/java/chapter04_concurrent_collections/
+src/main/java/chapter05_atomic_and_volatile/
 ```
 
 建议先写：
 
 ```text
-ConcurrentHashMapDemo.java
+AtomicIntegerDemo.java
 ```
 
-目标：先理解普通 `HashMap` 在并发修改下为什么不安全，再观察 `ConcurrentHashMap` 如何支持并发读写。
+目标：先对比普通 `int++` 在并发下为什么丢失更新，再观察 `AtomicInteger` 如何保证原子自增。
 
 ## 5. 每个章节的标准格式
 
@@ -160,7 +172,8 @@ ConcurrentHashMapDemo.java
 ### Phase 3：核心原理模块
 - [x] 完成 ReentrantLock 与 Condition 示例
 - [x] 完成 AQS 基本思想说明
-- [ ] 完成 ConcurrentHashMap / Atomic 类示例
+- [x] 完成 ConcurrentHashMap 与并发容器示例
+- [ ] 完成 Atomic 类示例
 
 ### Phase 4：问题排查与实战
 - [ ] 完成死锁案例
